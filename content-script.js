@@ -95,8 +95,6 @@ function createAiSection(repoUrl) {
         ? performSlopScan(repoUrl)
         : fetchSlopScanResult(repoUrl)
     ).then((data) => {
-
-      aiSection.querySelector(".ai-usage__rescan-link").removeAttribute("disabled");
       aiSection.querySelector(".ai-usage__button").style.display = data ? "none" : "";
       aiSection.querySelector(".ai-usage__scan-info").style.display = data ? "" : "none";
 
@@ -120,6 +118,14 @@ function createAiSection(repoUrl) {
       const toolsUsed = new Set(Object.values(data["record"]["evidence"]).flatMap(array => array).map(entry => entry["tool"]));
       toolsUsed.delete(null);  // remove nulls
       // this could be used later to show which AI tools were used
+    })
+    .catch((exception) => {
+      alert("Something went wrong while fetching AI scan results.")
+      console.error(exception);
+    })
+    .finally(() => {
+      aiSection.querySelector(".ai-usage__button").removeAttribute("disabled");
+      aiSection.querySelector(".ai-usage__rescan-link").removeAttribute("disabled");
     })
   };
   trigger();
