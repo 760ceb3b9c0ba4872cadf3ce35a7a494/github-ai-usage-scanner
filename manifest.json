@@ -1,0 +1,36 @@
+{
+  "name": "GitHub AI usage scanner",
+  "description": "Scan for AI usage on GitHub repositories using slopscore",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "144": "icons/icon-144.png",
+    "192": "icons/icon-192.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "github-ai-scan@760ceb3b9c0ba4872cadf3ce35a7a494.space",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*"],
+      "js": ["content-script.js"],
+      "css": ["style.css"],
+      "run_at": "document_start"
+    }
+  ],
+
+  "background": {
+    "scripts": ["service-worker.js"],
+    "service_worker": "service-worker.js",
+    "type": "module"
+  }
+}
