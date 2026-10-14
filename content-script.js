@@ -46,8 +46,8 @@ const findElement = (prefix) => findElementWithClassStartingWith(prefix)[0];
 
 function createAiSection(repoUrl) {
   // build the AI usage section to insert in the sidebar
-  const sectionClassName = findMangledClassName("SidebarSection-module__sidebarSection__");
-  const headingClassName = findMangledClassName("SidebarSection-module__sectionHeading__");
+  const sectionClassName = findMangledClassName("sidebarSection__");
+  const headingClassName = findMangledClassName("sectionHeading__");
   const headingClassName2 = findMangledClassName("prc-Heading-Heading-");
   const linkClassName = findMangledClassName("prc-Link-Link-");
 
@@ -144,7 +144,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let aiSection;
   const observer = new MutationObserver(() => {
     if (aiSection && document.body.contains(aiSection)) return;
-    const sidebar = findElement("CodeViewSidebar-module__borderGrid__");
+    const sidebar = findElement("borderGrid__");
     if (!sidebar) return;
     if (!aiSection) aiSection = createAiSection(repoUrl);
     // put the AI section right after the About section
