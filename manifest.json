@@ -2,7 +2,7 @@
   "name": "GitHub AI usage scanner",
   "description": "Scan for AI usage on GitHub repositories using slopscore",
   "manifest_version": 3,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icons": {
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png",
